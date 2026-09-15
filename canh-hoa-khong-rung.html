@@ -1,0 +1,2887 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cánh Hoa Không Rụng</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Bodoni+Moda:opsz,wght@6..96,400&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 20%,
+            #11181c 0%,
+            #090d10 48%,
+            #040607 100%
+        );
+
+    color:#c9d0d2;
+
+    font-family:
+        "Be Vietnam Pro",
+        sans-serif;
+
+    transition:
+        background .5s ease;
+}
+
+
+/* =========================================================
+   CINEMATIC OVERLAY
+========================================================= */
+
+body::before{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:1000;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(190,215,225,.025) 0%,
+            rgba(70,90,100,.055) 42%,
+            rgba(0,0,0,.72) 100%
+        );
+
+    opacity:.9;
+}
+
+body::after{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:1001;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.018) 0px,
+            rgba(255,255,255,.018) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+
+    opacity:.3;
+}
+
+
+/* =========================================================
+   LIGHTNING
+========================================================= */
+
+#stormFlash{
+    position:fixed;
+    inset:0;
+
+    z-index:9999;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(245,250,255,.98) 0%,
+            rgba(215,230,240,.68) 28%,
+            rgba(155,180,195,.25) 65%,
+            transparent 100%
+        );
+
+    opacity:0;
+}
+
+#stormFlash.active{
+    animation:
+        lightning
+        .38s
+        ease-out;
+}
+
+@keyframes lightning{
+
+    0%{
+        opacity:0;
+    }
+
+    8%{
+        opacity:.95;
+    }
+
+    14%{
+        opacity:.10;
+    }
+
+    25%{
+        opacity:.72;
+    }
+
+    34%{
+        opacity:.04;
+    }
+
+    45%{
+        opacity:.34;
+    }
+
+    100%{
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   SCREEN SHAKE
+========================================================= */
+
+body.shake{
+    animation:
+        shakeScreen
+        .4s
+        linear;
+}
+
+@keyframes shakeScreen{
+
+    0%{
+        transform:translate(0,0);
+    }
+
+    15%{
+        transform:translate(-4px,2px);
+    }
+
+    30%{
+        transform:translate(5px,-3px);
+    }
+
+    45%{
+        transform:translate(-4px,3px);
+    }
+
+    60%{
+        transform:translate(3px,-2px);
+    }
+
+    75%{
+        transform:translate(-2px,1px);
+    }
+
+    100%{
+        transform:translate(0,0);
+    }
+}
+
+
+/* =========================================================
+   SƯƠNG MÙ
+========================================================= */
+
+.mist-container{
+    position:fixed;
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:1;
+}
+
+.mist{
+    position:absolute;
+
+    width:350px;
+    height:100px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(215,230,236,.22) 0%,
+            rgba(175,195,204,.10) 35%,
+            rgba(130,155,165,.04) 60%,
+            transparent 78%
+        );
+
+    filter:blur(22px);
+
+    opacity:0;
+
+    animation:
+        mistMove
+        linear
+        infinite;
+}
+
+.mist.low{
+    width:520px;
+    height:150px;
+
+    filter:blur(34px);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(205,222,230,.17) 0%,
+            rgba(145,170,180,.065) 45%,
+            transparent 75%
+        );
+}
+
+@keyframes mistMove{
+
+    0%{
+        transform:
+            translate3d(-250px,110vh,0)
+            scale(.7);
+
+        opacity:0;
+    }
+
+    12%{
+        opacity:.38;
+    }
+
+    40%{
+        transform:
+            translate3d(180px,65vh,0)
+            scale(1.15);
+
+        opacity:.25;
+    }
+
+    65%{
+        transform:
+            translate3d(-100px,35vh,0)
+            scale(1.4);
+
+        opacity:.17;
+    }
+
+    85%{
+        opacity:.08;
+    }
+
+    100%{
+        transform:
+            translate3d(250px,-150px,0)
+            scale(1.8);
+
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   CÁNH HOA RƠI
+========================================================= */
+
+.petal-container{
+    position:fixed;
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:3;
+}
+
+.petal{
+    position:absolute;
+
+    width:7px;
+    height:11px;
+
+    border-radius:
+        70% 20% 70% 20%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(245,249,250,.96),
+            rgba(190,204,211,.68)
+        );
+
+    opacity:.4;
+
+    filter:
+        blur(.15px)
+        drop-shadow(
+            0 0 4px
+            rgba(215,230,235,.22)
+        );
+
+    animation:
+        petalFall
+        linear
+        forwards;
+}
+
+@keyframes petalFall{
+
+    0%{
+        transform:
+            translate3d(0,-80px,0)
+            rotate(0deg)
+            scale(.7);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:.55;
+    }
+
+    30%{
+        transform:
+            translate3d(
+                calc(var(--drift) * .25),
+                30vh,
+                0
+            )
+            rotate(120deg)
+            scale(.9);
+    }
+
+    55%{
+        transform:
+            translate3d(
+                calc(var(--drift) * -.2),
+                55vh,
+                0
+            )
+            rotate(230deg)
+            scale(1);
+    }
+
+    80%{
+        transform:
+            translate3d(
+                calc(var(--drift) * .6),
+                82vh,
+                0
+            )
+            rotate(320deg)
+            scale(.85);
+
+        opacity:.35;
+    }
+
+    100%{
+        transform:
+            translate3d(
+                var(--drift),
+                110vh,
+                0
+            )
+            rotate(450deg)
+            scale(.65);
+
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page{
+    position:relative;
+
+    z-index:4;
+
+    width:min(900px,90%);
+
+    margin:auto;
+
+    padding:
+        65px 0 110px;
+}
+
+
+/* =========================================================
+   BACK
+========================================================= */
+
+.back{
+    display:inline-block;
+
+    margin-bottom:85px;
+
+    color:#91a8af;
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    letter-spacing:.25em;
+
+    transition:.3s;
+}
+
+.back:hover{
+    color:#dbe5e8;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    text-align:center;
+
+    margin-bottom:110px;
+}
+
+.eyebrow{
+    color:#82959b;
+
+    font-size:9px;
+
+    letter-spacing:.42em;
+}
+
+.hero h1{
+    margin:24px 0;
+
+    color:#dce5e7;
+
+    font-family:
+        "Bodoni Moda",
+        serif;
+
+    font-size:
+        clamp(55px,10vw,105px);
+
+    font-weight:400;
+
+    line-height:.9;
+
+    letter-spacing:.06em;
+
+    text-shadow:
+        0 0 25px
+        rgba(190,215,225,.08),
+
+        0 0 60px
+        rgba(150,180,195,.05);
+}
+
+.hero > p{
+    color:#7e8b90;
+
+    font-size:12px;
+
+    line-height:2;
+}
+
+.fiction{
+    margin-top:35px;
+
+    color:#77858a;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:14px;
+
+    font-style:italic;
+
+    letter-spacing:.08em;
+}
+
+
+/* =========================================================
+   CHAPTER
+========================================================= */
+
+.chapter{
+    margin-bottom:105px;
+}
+
+.chapter h2{
+    margin-bottom:38px;
+
+    color:#aebfc5;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:39px;
+
+    font-weight:400;
+
+    line-height:1.1;
+
+    letter-spacing:.02em;
+
+    text-shadow:
+        0 0 25px
+        rgba(170,200,210,.08);
+}
+
+
+/* =========================================================
+   STORY TEXT
+========================================================= */
+
+.story-text{
+    position:relative;
+
+    margin-bottom:20px;
+
+    color:#bec8cb;
+
+    font-size:14px;
+
+    line-height:2.08;
+
+    cursor:pointer;
+
+    transition:
+        color .25s ease,
+        text-shadow .25s ease;
+}
+
+.story-text:hover{
+    color:#d9e0e2;
+
+    text-shadow:
+        0 0 14px
+        rgba(190,215,225,.12);
+}
+
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.quote{
+    position:relative;
+
+    margin:
+        30px 0;
+
+    padding:
+        12px 0 12px 25px;
+
+    border-left:
+        1px solid
+        rgba(165,190,200,.65);
+
+    color:#d0d9dc;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:21px;
+
+    font-style:italic;
+
+    line-height:1.7;
+
+    cursor:pointer;
+
+    transition:
+        color .25s ease,
+        text-shadow .25s ease;
+}
+
+.quote:hover{
+    color:#f0f5f6;
+
+    text-shadow:
+        0 0 16px
+        rgba(210,225,230,.15);
+}
+
+
+/* =========================================================
+   CLICK → TEXT FALL
+========================================================= */
+
+.falling{
+    animation:
+        textFall
+        .95s
+        cubic-bezier(.15,.7,.2,1)
+        forwards;
+}
+
+@keyframes textFall{
+
+    0%{
+        transform:
+            translate3d(0,0,0)
+            rotate(0deg);
+
+        opacity:1;
+
+        filter:blur(0);
+    }
+
+    20%{
+        transform:
+            translate3d(0,12px,0)
+            rotate(-1deg);
+
+        opacity:.92;
+    }
+
+    45%{
+        transform:
+            translate3d(
+                calc(var(--fall-x) * .3),
+                35vh,
+                0
+            )
+            rotate(
+                calc(var(--fall-r) * .45)
+            );
+
+        opacity:.62;
+    }
+
+    100%{
+        transform:
+            translate3d(
+                var(--fall-x),
+                110vh,
+                0
+            )
+            rotate(
+                var(--fall-r)
+            );
+
+        opacity:0;
+
+        filter:blur(3px);
+    }
+}
+
+
+/* =========================================================
+   END
+========================================================= */
+
+.end{
+    padding-top:60px;
+
+    border-top:
+        1px solid
+        rgba(175,200,210,.15);
+
+    text-align:center;
+}
+
+.end p{
+    color:#aebec2;
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:20px;
+
+    font-style:italic;
+
+    line-height:1.8;
+}
+
+.return{
+    display:inline-block;
+
+    margin-top:50px;
+
+    color:#91a8af;
+
+    text-decoration:none;
+
+    font-size:9px;
+
+    letter-spacing:.25em;
+
+    transition:.3s;
+}
+
+.return:hover{
+    color:#e0eaed;
+}
+
+
+/* =========================================================
+   SOUND BUTTON
+========================================================= */
+
+.sound{
+    position:fixed;
+
+    top:22px;
+    right:22px;
+
+    z-index:10000;
+
+    padding:10px 15px;
+
+    border:
+        1px solid
+        rgba(170,195,205,.25);
+
+    background:
+        rgba(5,9,11,.86);
+
+    color:#aebfc5;
+
+    font-family:
+        "Be Vietnam Pro",
+        sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:.14em;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(8px);
+
+    transition:.3s;
+}
+
+.sound:hover{
+    border-color:
+        rgba(210,230,238,.5);
+
+    background:
+        rgba(170,195,205,.07);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:700px){
+
+    .page{
+        width:88%;
+
+        padding-top:45px;
+    }
+
+    .back{
+        margin-bottom:60px;
+    }
+
+    .hero{
+        margin-bottom:80px;
+    }
+
+    .hero h1{
+        font-size:
+            clamp(48px,14vw,78px);
+    }
+
+    .chapter{
+        margin-bottom:80px;
+    }
+
+    .chapter h2{
+        font-size:32px;
+    }
+
+    .story-text{
+        font-size:13px;
+
+        line-height:2;
+    }
+
+    .quote{
+        padding-left:18px;
+
+        font-size:19px;
+
+        line-height:1.65;
+    }
+
+    .sound{
+        top:12px;
+        right:12px;
+
+        padding:9px 11px;
+
+        font-size:8px;
+    }
+
+    .petal{
+        opacity:.32;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     EFFECT
+===================================================== -->
+
+<div id="stormFlash"></div>
+
+<div
+    class="mist-container"
+    id="mistContainer">
+</div>
+
+<div
+    class="petal-container"
+    id="petalContainer">
+</div>
+
+
+<!-- =====================================================
+     SOUND
+===================================================== -->
+
+<button
+    class="sound"
+    id="soundButton"
+    type="button">
+
+    🔊 ÂM THANH: BẬT
+
+</button>
+
+
+<main class="page">
+
+
+<!-- =====================================================
+     BACK
+===================================================== -->
+
+<a
+    href="index.html"
+    class="back">
+
+    ← QUAY VỀ EDEN
+
+</a>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<header class="hero">
+
+    <div class="eyebrow">
+        MỘT CÂU CHUYỆN ĐỘC LẬP
+    </div>
+
+    <h1>
+        Cánh Hoa<br>
+        Không Rụng
+    </h1>
+
+    <p>
+        Một bản nhạc chưa từng được phát hành.<br>
+        Một tình yêu chưa từng chịu buông tay.
+    </p>
+
+    <div class="fiction">
+        Đây chỉ là một câu chuyện hư cấu.
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     LỜI TỰA
+===================================================== -->
+
+<section class="chapter">
+
+<h2>
+LỜI TỰA: TIẾNG HÁT TRONG SƯƠNG
+</h2>
+
+<p class="story-text">
+Không ai nhớ rõ, tiếng đàn ấy bắt đầu vang
+lên từ khi nào.
+</p>
+
+<p class="story-text">
+Người dân quanh đồi chỉ kể rằng, vào những
+đêm sương dày nhất, khi Đà Lạt ngủ vùi trong mùi thông ẩm và sương trắng, giữa
+lưng chừng đồi Hoa Trắng sẽ vọng ra tiếng nhạc.
+</p>
+
+<p class="story-text">
+Không phải tiếng gió, cũng chẳng phải tiếng
+dế kêu.
+</p>
+
+<p class="story-text">
+Là tiếng đàn piano — khàn, vỡ, run rẩy như
+có ai đang cố đánh lại một khúc ca cũ mà bàn tay đã quên.
+</p>
+
+<p class="story-text">
+Thỉnh thoảng, xen giữa những phím đàn ấy là
+một giọng nữ.
+</p>
+
+<p class="story-text">
+Rất nhẹ, gần như thì thầm vào sương:
+</p>
+
+<div class="quote">
+“Nếu hoa không rụng... tình chưa từng tàn.”
+</div>
+
+<p class="story-text">
+Người ta bảo đó là Thư, nữ ca sĩ của ban nhạc
+Mây Trắng, đã chết trong vụ án năm người một năm về trước.
+</p>
+
+<p class="story-text">
+Cũng có người nói đó là Tuấn, kẻ từng sáng
+tác bản “Cánh Hoa Không Rụng” cùng cô — anh ta vẫn chưa rời đi, vẫn ngồi đâu
+đó, lặng lẽ chơi lại khúc nhạc dang dở của mình.
+</p>
+
+<p class="story-text">
+Căn biệt thự trên đồi giờ đã hoang tàn.
+</p>
+
+<p class="story-text">
+Cửa sổ vỡ, rèm rách, nhưng trong những đêm
+gió mạnh, ai đi ngang qua vẫn thấy ánh đèn vàng le lói trong phòng thu tầng
+hai, và bóng một người ngồi trước đàn, cúi đầu, bất động.
+</p>
+
+<p class="story-text">
+Không ai dám bước vào.
+</p>
+
+<p class="story-text">
+Người ta chỉ đứng xa, nghe nhạc, rồi quay
+lưng đi, sợ rằng nếu tiến lại gần, họ cũng sẽ nghe thấy giọng nói ấy — giọng
+thì thầm gọi tên mình từ phía sau tấm rèm trắng.
+</p>
+
+<p class="story-text">
+Và có lẽ, chính nơi đó, câu chuyện bắt đầu.
+</p>
+
+<p class="story-text">
+Từ một đêm sương như thế — khi tiếng đàn bật
+lên lần nữa, và một cánh hoa ly rơi xuống, nhẹ đến mức tưởng chừng không chạm đất.
+</p>
+
+</section>
+
+
+<!-- =====================================================
+     CHƯƠNG 1
+===================================================== -->
+
+<section class="chapter">
+
+<h2>
+CHƯƠNG 1: CÁNH HOA KHÔNG RỤNG
+</h2>
+
+<p class="story-text">
+Đà Lạt, rạng sáng ngày 12 tháng 3.
+</p>
+
+<p class="story-text">
+Sương giăng kín những con dốc ngoằn
+ngoèo, trùm lên căn nhà gỗ nhỏ nằm nép bên sườn đồi. Trong màn sương dày như tấm
+lụa xám, ánh đèn vàng mờ hắt ra từ khung cửa sổ, lay động theo từng cơn gió lạnh.
+</p>
+
+<p class="story-text">
+Tuấn ngồi trước cây đàn piano cũ.
+Mặt gỗ bong tróc, phím đàn ngả màu ngà như răng của một linh hồn già nua. Mấy
+ngón tay anh run run, vừa vì lạnh, vừa vì sợ.
+</p>
+
+<p class="story-text">
+Âm thanh chập chờn vang lên, khàn
+như hơi thở người hấp hối.
+</p>
+
+<p class="story-text">
+Anh khẽ nói, giọng khàn đặc vì
+nhiều đêm mất ngủ:
+</p>
+
+<div class="quote">
+“Thư, nghe này... đoạn điệp khúc anh sửa rồi. Em sẽ thích.”
+</div>
+
+<p class="story-text">
+Không ai trả lời.
+</p>
+
+<p class="story-text">
+Chỉ có gió rít qua khe cửa, và
+đâu đó, rất khẽ, tiếng cười trong trẻo — mảnh như tiếng ly thủy tinh chạm nhau,
+vọng ra từ phía sau tấm rèm trắng.
+</p>
+
+<p class="story-text">
+Tuấn khựng lại.
+</p>
+
+<p class="story-text">
+Một giọt máu đỏ sẫm rơi từ đầu
+ngón tay anh xuống phím đàn.
+</p>
+
+<p class="story-text">
+Tiếng “tách” vang lên khô khốc —
+một sợi dây đàn đứt.
+</p>
+
+<p class="story-text">
+Hệt như lần cuối cùng anh chạm
+vào nhạc cụ này... trước vụ án năm người chết.
+</p>
+
+<p class="story-text">
+Không khí trong phòng đặc quánh.
+Tuấn ngẩng lên, nhìn qua khung cửa kính mờ sương.
+</p>
+
+<p class="story-text">
+Phía ngoài, có thứ gì đó vừa lướt
+qua — một bóng trắng, mảnh như sương nhưng rõ đến mức khiến anh rùng mình.
+</p>
+
+<p class="story-text">
+Anh thều thào, như nói với chính
+bóng tối:
+</p>
+
+<div class="quote">
+“Em chưa chết... phải không, Thư?”
+</div>
+
+<p class="story-text">
+Vẫn không có tiếng đáp.
+</p>
+
+<p class="story-text">
+Nhưng từ chiếc máy ghi âm bật dở
+trên bàn, phát ra âm thanh lạ: tiếng kim loại lên đạn, khô và dứt khoát — tạch.
+</p>
+
+<p class="story-text">
+Tuấn giật mình, quay phắt lại.
+</p>
+
+<p class="story-text">
+Cây đàn im bặt. Đèn chập chờn. Và
+ngoài khung cửa sổ, trong lớp sương dày, một cô gái mặc váy trắng đang đứng
+nhìn anh.
+</p>
+
+<p class="story-text">
+Ánh mắt cô lạnh như nước hồ Tuyền
+Lâm giữa đêm.
+</p>
+
+<p class="story-text">
+Môi cô khẽ mấp máy, không thành
+tiếng.
+</p>
+
+<p class="story-text">
+Nhưng Tuấn nghe rõ trong đầu
+mình, như có ai đó đang hát:
+</p>
+
+<div class="quote">
+“Nếu hoa không rụng... tình chưa từng tàn.”
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CHƯƠNG 2
+===================================================== -->
+
+<section class="chapter">
+
+<h2>
+CHƯƠNG 2: ÂM THANH TRONG SƯƠNG
+</h2>
+
+<p class="story-text">
+Sáng sớm, Đà Lạt vẫn ngập trong
+làn sương xám như khói thuốc.
+</p>
+
+<p class="story-text">
+Tuấn đội chiếc mũ len cũ, khoác
+áo măng-tô sờn vai, bước ra khỏi căn nhà gỗ. Mỗi bước chân dẫm xuống đất ẩm
+nghe như tiếng thở dài của đất. Cả thị trấn vẫn ngủ say, chỉ còn lại tiếng gió
+hú và mùi thông ẩm lạnh.
+</p>
+
+<p class="story-text">
+Anh đi như kẻ mộng du. Trong đầu,
+đoạn nhạc dang dở vẫn xoáy sâu — khúc hát của “Cánh Hoa Không Rụng”, giờ chỉ
+còn những nốt đứt đoạn và tiếng cười vỡ vụn.
+</p>
+
+<p class="story-text">
+Không biết bằng cách nào, anh đã
+đi tới con đường cũ dẫn đến quán cà phê Mây Trắng — nơi ban nhạc từng tập luyện,
+từng cãi vã, từng cười đến bật khóc.
+</p>
+
+<p class="story-text">
+Cánh cửa quán khép hờ, bảng hiệu
+gỉ sét lắc lư trong gió.
+</p>
+
+<p class="story-text">
+Bên trong, bàn ghế phủ đầy bụi,
+ly tách vỡ vụn nằm rải rác như tàn tích của một bữa tiệc đã tàn từ kiếp trước.
+</p>
+
+<p class="story-text">
+Thế nhưng… từ tầng trên, vẫn vọng
+xuống một âm thanh kỳ lạ — tiếng piano.
+</p>
+
+<p class="story-text">
+Mỗi nốt vang lên run rẩy, méo mó,
+nhưng rõ ràng là giai điệu của bài hát đó.
+</p>
+
+<p class="story-text">
+Tuấn bước từng bậc cầu thang. Mỗi
+tiếng “cót két” vang lên như đếm ngược điều gì đó trong anh.
+</p>
+
+<p class="story-text">
+Khi lên tới tầng hai, anh thấy
+Khang — tay trống của nhóm năm xưa — đang ngồi ở góc phòng, lưng hơi nghiêng,
+đôi mắt cụp xuống, nụ cười mờ nhạt như vẽ.
+</p>
+
+<p class="story-text">
+Tuấn khựng lại. Máu trong người
+đông cứng.
+</p>
+
+<p class="story-text">
+Khang đã chết. Anh nhớ rất rõ —
+chính mình đã nhìn thấy thi thể cậu ta nằm dưới sàn phòng thu, đầu vỡ nát.
+</p>
+
+<p class="story-text">
+Thế mà bây giờ, hắn đang ngồi đó,
+thản nhiên như chưa từng rời khỏi thế gian.
+</p>
+
+<p class="story-text">
+Khang nhìn lên, môi nhếch nhẹ:
+</p>
+
+<div class="quote">
+“Mày đến trễ rồi. Thư vẫn đang đợi mà.”
+</div>
+
+<p class="story-text">
+Giọng nói ấy… ấm và thật đến rợn
+người.
+</p>
+
+<p class="story-text">
+Tuấn lùi lại, ngực nhói buốt. Anh
+cố nuốt khan, lắp bắp:
+</p>
+
+<div class="quote">
+“Khang… mày… mày chết rồi.”
+</div>
+
+<p class="story-text">
+Khang không đáp, chỉ quay đầu, chỉ
+tay về phía phòng thu — cánh cửa gỗ sơn trắng cuối hành lang.
+</p>
+
+<p class="story-text">
+Ánh mắt hắn như xuyên qua lớp
+sương trong phòng, trống rỗng và mời gọi.
+</p>
+
+<p class="story-text">
+Tuấn bước tới. Tay run đến mức
+cánh cửa mở ra bằng cú đẩy nhẹ.
+</p>
+
+<p class="story-text">
+Bên trong — trống rỗng.
+</p>
+
+<p class="story-text">
+Chỉ có mùi ẩm mốc và vài bản nhạc
+rách nát rơi trên sàn.
+</p>
+
+<p class="story-text">
+Anh quay lại — Khang biến mất.
+</p>
+
+<p class="story-text">
+Chỉ còn một vệt máu mờ kéo dài từ
+nơi hắn ngồi đến cửa sổ. Giọt cuối cùng còn chưa kịp khô, đỏ tươi như cánh hoa
+bị dẫm nát.
+</p>
+
+<p class="story-text">
+Điện thoại trong túi áo rung lên.
+Màn hình sáng loé. Một tin nhắn từ số không tên:
+</p>
+
+<div class="quote">
+“Đừng để cánh hoa rụng, Tuấn à.”
+</div>
+
+<p class="story-text">
+Cổ họng anh nghẹn lại. Bàn tay cứng
+đờ, tim đập loạn.
+</p>
+
+<p class="story-text">
+Anh mở danh bạ — số đó... là Thư.
+</p>
+
+<p class="story-text">
+Người con gái đã chết cùng Khang.
+</p>
+
+<p class="story-text">
+Mọi âm thanh trong phòng vụt tắt.
+Chỉ còn hơi thở của chính anh vang vọng.
+</p>
+
+<p class="story-text">
+Rồi từ phía sau, có tiếng chân rất
+khẽ — như ai đó đang bước đến gần.
+</p>
+
+<p class="story-text">
+Tuấn quay lại, nhưng không thấy
+ai.
+</p>
+
+<p class="story-text">
+Chỉ có khung gương cũ phản chiếu
+khuôn mặt anh: hốc hác, đôi mắt đỏ ngầu, và phía sau vai — thoáng qua bóng dáng
+một người phụ nữ mặc váy trắng.
+</p>
+
+<p class="story-text">
+Anh giật lùi, đập mạnh lưng vào
+tường.
+</p>
+
+<p class="story-text">
+Không khí trong phòng trở nên đặc
+quánh, ngột ngạt. Anh lao ra khỏi quán, chạy thẳng xuống con dốc dẫn về nhà Vy
+— người bạn cuối cùng anh tin là còn sống.
+</p>
+
+<p class="story-text">
+Cửa nhà Vy mở hé. Mùi hương oải
+hương thoảng nhẹ — mùi Thư từng dùng.
+</p>
+
+<p class="story-text">
+Vy ngồi trên sàn, tóc rối, đôi mắt
+sưng húp. Cô nhìn Tuấn, ánh nhìn pha lẫn sợ hãi và oán hận.
+</p>
+
+<div class="quote">
+“Tuấn... sao anh lại đến đây?”
+</div>
+
+<p class="story-text">
+Tuấn nghẹn giọng:
+</p>
+
+<div class="quote">
+“Vy, anh… anh cần biết chuyện gì đã xảy ra. Anh
+thấy Thư, anh thấy Khang... Anh không hiểu nổi…”
+</div>
+
+<p class="story-text">
+Vy bật khóc. Giọng cô như xé toạc
+căn phòng yên tĩnh:
+</p>
+
+<div class="quote">
+“Anh không nhớ à? Chính anh… là người bóp cò!”
+</div>
+
+<p class="story-text">
+Câu nói rơi xuống như viên đá nặng
+nề vào lòng hồ ký ức của Tuấn. Mặt anh trắng bệch.
+</p>
+
+<div class="quote">
+“Không… không thể nào…”
+</div>
+
+<p class="story-text">
+Anh bước tới, định giữ lấy tay
+cô. Nhưng Vy vùng ra, chiếc dao gọt trái cây trên bàn rơi xuống — một cú giật bất
+ngờ, lưỡi dao xuyên qua ngực cô.
+</p>
+
+<p class="story-text">
+Tuấn đứng chết lặng.
+</p>
+
+<p class="story-text">
+Máu văng lên mặt anh, ấm và tanh
+nồng.
+</p>
+
+<p class="story-text">
+Anh lùi lại, run bắn.
+</p>
+
+<p class="story-text">
+Nhưng ngay khoảnh khắc sau, xác
+Vy… biến mất.
+</p>
+
+<p class="story-text">
+Không máu, không dấu vết. Chỉ còn
+lại chiếc khăn trắng dính vài giọt nước hồng — như thể tất cả chỉ là một ảo ảnh.
+</p>
+
+<p class="story-text">
+Từ xa, giữa lớp sương đặc quánh,
+vang lên giọng hát của Thư:
+</p>
+
+<div class="quote">
+“Anh đã bắt đầu nhớ ra rồi… phải không?”
+</div>
+
+<p class="story-text">
+Tuấn gào lên, nhưng âm thanh của
+anh tan biến trong sương, hòa vào tiếng đàn mơ hồ từ đâu đó vọng lại — khúc hát
+dang dở, “Cánh Hoa Không Rụng”.
+</p>
+
+</section>
+
+
+<!-- =====================================================
+     CHƯƠNG 3
+===================================================== -->
+
+<section class="chapter">
+
+<h2>
+CHƯƠNG 3: KÝ ỨC CỦA KẺ MÙ LÒA
+</h2>
+
+<p class="story-text">
+Mưa trút xuống từ sáng, nặng và
+dài như một chuỗi tội lỗi không dứt.
+</p>
+
+<p class="story-text">
+Tuấn ngồi co ro trong căn phòng
+nhỏ. Bên ngoài cửa sổ, những giọt nước đập vào kính như ai đó đang gõ nhịp cho
+một bản nhạc tang lễ.
+</p>
+
+<p class="story-text">
+Bức tường trước mặt anh dán đầy
+hình ảnh — những tấm ảnh đã ngả vàng: gương mặt của Thư, của Khang, của Vy, và
+hai thành viên khác trong ban nhạc cũ.
+</p>
+
+<p class="story-text">
+Chúng được ghim lên bằng đinh,
+đan xen giữa những mảnh giấy nhạc rách, có dòng chữ nguệch ngoạc bằng bút đỏ:
+</p>
+
+<div class="quote">
+“AI GIẾT HỌ?”
+</div>
+
+<p class="story-text">
+Tuấn không nhớ mình viết từ khi
+nào. Mỗi lần đọc lại, dòng chữ ấy như một vết cắt mới trong đầu.
+</p>
+
+<p class="story-text">
+Anh mở cuốn sổ tay cũ, lật từng
+trang nhòe nước. Dưới ánh đèn yếu, chữ viết run rẩy:
+</p>
+
+<div class="quote">
+“12/3 — Thư nói sẽ rời nhóm. Khang bênh cô ta.
+Vy khóc. Anh không chịu được nữa…”
+</div>
+
+<p class="story-text">
+Tay Tuấn run lên.
+</p>
+
+<p class="story-text">
+Một tiếng vọng từ sâu trong đầu
+anh trỗi dậy: tiếng cãi vã, tiếng vỡ ly, tiếng người hét, rồi… tiếng súng.
+</p>
+
+<p class="story-text">
+Cơn đau ập đến như búa bổ. Anh ôm
+đầu, gục xuống. Ký ức rối loạn, những hình ảnh chớp nhoáng nổ tung trong tâm
+trí.
+</p>
+
+<p class="story-text">
+Ngày đó, căn phòng thu nhỏ ánh
+đèn vàng.
+</p>
+
+<p class="story-text">
+Thư ngồi trước micro, tóc buộc hờ,
+ánh mắt mệt mỏi.
+</p>
+
+<div class="quote">
+“Tuấn, em nghĩ… em sẽ rời nhóm một thời gian.”
+</div>
+
+<p class="story-text">
+Câu nói ấy như một nhát dao.
+</p>
+
+<p class="story-text">
+Khang gắt:
+</p>
+
+<div class="quote">
+“Đừng căng thẳng thế. Ai cũng cần nghỉ ngơi.”
+</div>
+
+<p class="story-text">
+Tuấn đứng dậy, bàn tay siết chặt
+khẩu súng lục — thứ anh luôn mang vì sợ kẻ trộm nhạc cụ.
+</p>
+
+<div class="quote">
+“Mày bênh cô ta hả, Khang?”
+</div>
+
+<p class="story-text">
+Không ai kịp trả lời. Tiếng nổ
+vang lên, khô và chát.
+</p>
+
+<p class="story-text">
+Một, rồi hai, rồi ba phát.
+</p>
+
+<p class="story-text">
+Máu loang ra trên sàn gỗ.
+</p>
+
+<p class="story-text">
+Thư kêu lên, lao tới, nhưng phát
+súng cuối cùng… trượt khỏi tay anh, và trúng vào ngực cô.
+</p>
+
+<p class="story-text">
+Mọi thứ sau đó chỉ là khoảng trống
+trắng xóa.
+</p>
+
+<p class="story-text">
+Anh nhớ mình ôm lấy cô, lặp đi lặp
+lại:
+</p>
+
+<div class="quote">
+“Không sao đâu, Thư… hoa chưa rụng… em chưa chết…”
+</div>
+
+<p class="story-text">
+Rồi anh sắp đặt mọi thứ như một vụ
+án khác — kéo thi thể, đốt hồ sơ, xóa sạch dấu vết.
+</p>
+
+<p class="story-text">
+Anh thôi miên chính mình, tin rằng
+Thư vẫn sống, rằng kẻ giết người là một ai đó khác, vô hình.
+</p>
+
+<p class="story-text">
+Mưa vẫn chưa dứt.
+</p>
+
+<p class="story-text">
+Tuấn ngẩng lên, nhìn vào khung
+gương nứt trước mặt.
+</p>
+
+<p class="story-text">
+Trong gương, anh thấy Thư — váy
+trắng, môi nhợt, đôi mắt sâu thẳm như vực.
+</p>
+
+<p class="story-text">
+Cô mỉm cười, bước lại gần.
+</p>
+
+<p class="story-text">
+Mỗi bước chân cô không tạo tiếng
+động, chỉ để lại những vệt nước tan trong không khí.
+</p>
+
+<div class="quote">
+“Em không chết, Tuấn à. Em chỉ đợi anh tỉnh
+thôi.”
+</div>
+
+<p class="story-text">
+Tuấn lắc đầu, nước mắt và mưa hòa
+làm một:
+</p>
+
+<div class="quote">
+“Không… không thể nào. Anh chỉ muốn em ở lại… chỉ
+muốn em hát lần nữa thôi…”
+</div>
+
+<p class="story-text">
+Thư đưa tay lên, chạm vào má anh.
+Lạnh buốt.
+</p>
+
+<p class="story-text">
+Rồi cô đặt khẩu súng vào lòng bàn
+tay anh.
+</p>
+
+<div class="quote">
+“Nếu anh còn yêu em… hãy kết thúc tất cả đi.”
+</div>
+
+<p class="story-text">
+Anh nhìn khẩu súng, rồi nhìn Thư.
+</p>
+
+<p class="story-text">
+Trong mắt cô không còn oán hận,
+chỉ còn một nỗi buồn dịu như khói sương.
+</p>
+
+<p class="story-text">
+Bên ngoài, sấm nổ.
+</p>
+
+<p class="story-text">
+Ánh chớp lóe sáng chiếu vào căn
+phòng, soi rõ nét chữ trên tường:
+</p>
+
+<div class="quote">
+“Nếu hoa không rụng… tình chưa tàn.”
+</div>
+
+<p class="story-text">
+Tuấn bật cười, một nụ cười đứt đoạn,
+pha tiếng nấc.
+</p>
+
+<p class="story-text">
+Khẩu súng run lên trong tay anh.
+</p>
+
+</section>
+
+
+<!-- =====================================================
+     CHƯƠNG 4
+===================================================== -->
+
+<section class="chapter">
+
+<h2>
+CHƯƠNG 4: ÁNH SÁNG TRONG SƯƠNG
+</h2>
+
+<p class="story-text">
+Đêm đó, sương phủ dày đến mức đèn
+xe chỉ còn soi được vài mét phía trước.
+</p>
+
+<p class="story-text">
+Tuấn lái chiếc xe cũ men theo con
+đường ngoằn ngoèo dẫn lên biệt thự Hoa Trắng – nơi nhóm từng thu âm album đầu
+tiên, cũng là nơi vụ án kết thúc một năm trước.
+</p>
+
+<p class="story-text">
+Gió thổi mạnh, hương hoa ly vỡ vụn
+trong không khí – thứ mùi ngọt pha lẫn tanh lạnh khiến anh buồn nôn.
+</p>
+
+<p class="story-text">
+Bầu trời như bị xé rách, mưa rơi
+theo những vệt nghiêng, bắn vào kính xe loang lổ như máu.
+</p>
+
+<p class="story-text">
+Cổng biệt thự mở hé. Bên trong tối
+om, chỉ có ánh đèn nhỏ rọi từ tầng hai.
+</p>
+
+<p class="story-text">
+Tuấn bước vào, mỗi tiếng chân
+vang vọng trong không gian rỗng, dội ngược lại như tiếng từ một nơi khác.
+</p>
+
+<p class="story-text">
+Căn phòng khách phủ đầy bụi, đàn
+piano nứt dây, những khung ảnh cũ treo lệch – có ảnh của Thư, Khang, Vy… tất cả
+đều bị xé mất khuôn mặt.
+</p>
+
+<p class="story-text">
+Anh bước lên cầu thang.
+</p>
+
+<p class="story-text">
+Gió hú qua khung cửa vỡ.
+</p>
+
+<p class="story-text">
+Và ở cuối hành lang, ánh đèn vàng
+– nơi phòng thu cũ vẫn còn sáng.
+</p>
+
+<p class="story-text">
+Tuấn mở cửa.
+</p>
+
+<p class="story-text">
+Không gian tĩnh lặng đến rợn người.
+</p>
+
+<p class="story-text">
+Trên bàn, máy ghi âm vẫn chạy,
+phát lại khúc hát “Cánh Hoa Không Rụng” – giọng Thư, trong trẻo, day dứt, như
+thể cô đang đứng đâu đó quanh anh.
+</p>
+
+<p class="story-text">
+Rồi anh nghe thấy nó thật. Giọng
+hát vang lên, gần đến mức anh cảm nhận được hơi thở.
+</p>
+
+<p class="story-text">
+Tuấn quay lại – Thư đang đứng đó.
+Váy trắng, tóc ướt dính vào mặt, đôi mắt sâu thẳm, lấp lánh như giọt sương phản
+chiếu ánh trăng.
+</p>
+
+<p class="story-text">
+Cô nhìn anh, khẽ cười, nói bằng
+giọng nhẹ như gió:
+</p>
+
+<div class="quote">
+“Anh giết họ, rồi giấu em. Em chỉ muốn anh nhớ lại
+tất cả.”
+</div>
+
+<p class="story-text">
+Tuấn lắc đầu, bước lùi:
+</p>
+
+<div class="quote">
+“Không, anh không muốn… Anh chỉ muốn em sống lại
+thôi, Thư…”
+</div>
+
+<p class="story-text">
+Cô tiến đến gần. Mỗi bước cô đi,
+mặt sàn kêu răng rắc như tiếng xương.
+</p>
+
+<div class="quote">
+“Nếu hoa không rụng… tình chưa tàn.”
+</div>
+
+<p class="story-text">
+Cô đặt khẩu súng vào tay anh.
+</p>
+
+<p class="story-text">
+Khẩu súng đó – anh nhận ra –
+chính là của mình, khẩu anh tưởng đã vứt đi trong hồ sau đêm tội lỗi.
+</p>
+
+<p class="story-text">
+Cả hai nhìn nhau. Trong ánh sáng
+nhạt, đôi mắt cô dường như phản chiếu gương mặt anh – méo mó, rạn nứt, nụ cười
+của kẻ mất trí.
+</p>
+
+<p class="story-text">
+Tuấn run rẩy nâng súng.
+</p>
+
+<p class="story-text">
+Một giọt nước mắt rơi, tan vào
+báng kim loại lạnh.
+</p>
+
+<div class="quote">
+“Anh xin lỗi…”
+</div>
+
+<p class="story-text">
+Tiếng súng vang lên, gọn và sâu,
+dội qua lớp sương dày.
+</p>
+
+<p class="story-text">
+Ánh sáng lóe lên rồi vụt tắt.
+</p>
+
+<p class="story-text">
+Khi sương tan dần, biệt thự chìm
+trong tĩnh mịch.
+</p>
+
+<p class="story-text">
+Trên sàn, chỉ còn lại cây đàn cũ,
+và bản nhạc mở dở — “Cánh Hoa Không Rụng”.
+</p>
+
+<p class="story-text">
+Gió lật qua trang cuối cùng, nơi
+có dòng chữ mờ nhòe vì nước:
+</p>
+
+<div class="quote">
+“Nếu hoa không rụng… tình chưa từng tàn.”
+</div>
+
+<p class="story-text">
+Ngoài kia, bình minh chậm chạp
+trườn lên qua những rặng thông.
+</p>
+
+<p class="story-text">
+Một tia sáng rọi xuyên qua cửa sổ,
+chiếu thẳng vào tấm gương nứt, nơi phản chiếu hình ảnh một người đàn ông ngồi bất
+động – đôi mắt khép hờ, nụ cười thanh thản, máu loang như cánh hoa đỏ.
+</p>
+
+</section>
+
+
+<!-- =====================================================
+     CHƯƠNG 5
+===================================================== -->
+
+<section class="chapter">
+
+<h2>
+CHƯƠNG 5: BẢN NHẠC CÒN VANG
+</h2>
+
+<p class="story-text">
+Sáng hôm sau, sương vẫn phủ kín đồi.
+</p>
+
+<p class="story-text">
+Cảnh sát tìm đến biệt thự Hoa Trắng
+sau khi nhận được tin báo có tiếng súng trong đêm.
+</p>
+
+<p class="story-text">
+Cánh cửa gỗ khép hờ, ẩm và lạnh.
+Bên trong, mùi hoa ly trộn lẫn với mùi thuốc súng.
+</p>
+
+<p class="story-text">
+Trên ghế, một người đàn ông ngồi
+thẳng lưng, đầu tựa vào tường, miệng mỉm cười như vừa kết thúc một bản nhạc
+dài.
+</p>
+
+<p class="story-text">
+Trong tay anh ta là khẩu súng lục
+còn vương khói.
+</p>
+
+<p class="story-text">
+Trên bàn, một bản nhạc viết dở. Nửa
+cuối trang bị xé, chỉ còn lại dòng chữ nguệch ngoạc bằng mực đỏ:
+</p>
+
+<div class="quote">
+“Nếu hoa không rụng… tình chưa từng tàn.”
+</div>
+
+<p class="story-text">
+Giấy tờ trong túi áo ghi tên Nguyễn
+Tuấn, 32 tuổi.
+</p>
+
+<p class="story-text">
+Nhưng khi giám định ADN, kết quả
+không trùng với hồ sơ Tuấn thật — người đã mất tích suốt một năm sau vụ án năm
+thành viên ban nhạc chết tại Đà Lạt.
+</p>
+
+<p class="story-text">
+Người trong ghế chỉ là một ai đó
+mang khuôn mặt giống Tuấn, hoặc cố tình trở thành anh ta.
+</p>
+
+<p class="story-text">
+Trong ngăn kéo bàn thu âm, cảnh
+sát tìm thấy một bức ảnh cũ.
+</p>
+
+<p class="story-text">
+Sáu người — năm chàng trai, một
+cô gái.
+</p>
+
+<p class="story-text">
+Cô gái đứng giữa, nụ cười
+nghiêng, tay cầm đoá ly trắng. Mép dưới tấm ảnh có vẽ thêm bằng mực đỏ một cánh
+hoa rụng xuống.
+</p>
+
+<p class="story-text">
+Dòng ghi chú sau ảnh:
+</p>
+
+<div class="quote">
+“Mây Trắng – ngày thu âm cuối cùng.”
+</div>
+
+<p class="story-text">
+Bên cạnh, có một phong bì dán
+kín.
+</p>
+
+<p class="story-text">
+Bên trong là bản sao tờ khai xuất
+cảnh của một phụ nữ tên Trần Thu Thư — rời Việt Nam sang Pháp hai tháng sau vụ
+án.
+</p>
+
+<p class="story-text">
+Trên góc giấy, có dòng chữ mềm mại,
+nghiêng nghiêng như gió:
+</p>
+
+<div class="quote">
+“Cánh hoa không rụng – vì có người khác đã thay
+anh rụng thay rồi.”
+</div>
+
+<p class="story-text">
+Tin tức về vụ việc lan khắp thị
+trấn trong vài ngày, rồi chìm dần.
+</p>
+
+<p class="story-text">
+Người ta nói vào những đêm sương
+dày, nếu đi ngang qua đồi Hoa Trắng, sẽ nghe thấy tiếng đàn piano cũ vang lên từ
+biệt thự bỏ hoang.
+</p>
+
+<p class="story-text">
+Lúc gần sáng, đôi khi có người
+nghe thấy giọng nữ khe khẽ hát:
+</p>
+
+<div class="quote">
+“Nếu hoa không rụng... tình chưa từng tàn…”
+</div>
+
+<p class="story-text">
+Không ai biết giọng đó đến từ
+đâu.
+</p>
+
+<p class="story-text">
+Cũng không ai dám bước vào căn
+nhà đó lần thứ hai.
+</p>
+
+<p class="story-text">
+Sương vẫn dày. Hoa ly vẫn nở.
+</p>
+
+<p class="story-text">
+Và đâu đó trong không khí, âm
+thanh của bản nhạc dang dở vẫn trôi, như thể có ai đó đang tiếp tục chơi nốt cuối
+cùng mà thế gian còn thiếu.
+</p>
+
+</section>
+
+
+<!-- =====================================================
+     HẬU TRUYỆN
+===================================================== -->
+
+<section class="chapter">
+
+<h2>
+HẬU TRUYỆN: SAU KHI HOA RỤNG
+</h2>
+
+<p class="story-text">
+Ba năm sau, đồi Hoa Trắng không
+còn ai nhắc đến.
+</p>
+
+<p class="story-text">
+Biệt thự ấy vẫn đứng đó, như một
+vết sẹo giữa rừng.
+</p>
+
+<p class="story-text">
+Tường phủ rêu, cửa gãy, những ô
+kính đã bị gió thổi vỡ hết.
+</p>
+
+<p class="story-text">
+Người ta nói đêm nào cũng có tiếng
+đàn, nhưng dần dần, chẳng ai còn nghe thấy nữa — hoặc có lẽ, họ đã quen với nó
+rồi.
+</p>
+
+<p class="story-text">
+Một sáng mùa thu, có cô gái trẻ
+xuất hiện ở ga Đà Lạt.
+</p>
+
+<p class="story-text">
+Cô mang theo chiếc vali cũ, trên
+tay đeo vòng bạc khắc chữ Mây Trắng.
+</p>
+
+<p class="story-text">
+Cô không nói tên, chỉ hỏi đường
+lên biệt thự Hoa Trắng, giọng nhẹ như người sắp trở về nhà.
+</p>
+
+<p class="story-text">
+Người lái xe ôm chần chừ, rồi bảo:
+</p>
+
+<div class="quote">
+“Giờ đó chẳng còn gì đâu cô ạ. Chỉ
+là căn nhà bỏ hoang, với cây đàn không ai dám chạm.”
+</div>
+
+<p class="story-text">
+Cô gái chỉ mỉm cười.
+</p>
+
+<div class="quote">
+“Không sao. Tôi chỉ muốn nghe lại
+bản nhạc đó, lần cuối.”
+</div>
+
+<p class="story-text">
+Buổi chiều, sương tràn đến nhanh.
+</p>
+
+<p class="story-text">
+Người ta thấy cô bước vào căn biệt
+thự.
+</p>
+
+<p class="story-text">
+Đến tối, đèn trong phòng thu bật
+sáng lần đầu tiên sau nhiều năm.
+</p>
+
+<p class="story-text">
+Ai đó kể rằng, họ nghe thấy tiếng
+đàn vang lên, rõ, ấm và trọn vẹn hơn hẳn.
+</p>
+
+<p class="story-text">
+Giọng nữ hòa cùng tiếng đàn,
+không run rẩy mà trong trẻo, như thể bản nhạc cuối cùng đã được hoàn tất.
+</p>
+
+<div class="quote">
+“Nếu hoa không rụng… tình chưa từng tàn.”
+</div>
+
+<p class="story-text">
+Sáng hôm sau, người ta chỉ thấy
+cánh cửa hé mở.
+</p>
+
+<p class="story-text">
+Trên bàn, cây đàn vẫn ở đó, phím trắng
+dính chút bụi sương.
+</p>
+
+<p class="story-text">
+Bên cạnh, có một tấm bưu thiếp đặt
+ngay ngắn.
+</p>
+
+<div class="quote">
+“Cảm ơn vì đã để tôi được hát lần cuối.
+
+Khi âm nhạc dừng lại, nghĩa là
+tôi đã yên.”
+</div>
+
+<p class="story-text">
+Không ai tìm thấy cô gái nữa.
+</p>
+
+<p class="story-text">
+Chỉ có hoa ly trong vườn, năm đó,
+nở trắng hơn bao giờ hết.
+</p>
+
+<p class="story-text">
+Và mỗi khi gió thổi qua, người ta
+vẫn nghe tiếng gì đó rất khẽ —
+</p>
+
+<p class="story-text">
+Giống như tiếng ai cười trong sương.
+</p>
+
+</section>
+
+
+<!-- =====================================================
+     END
+===================================================== -->
+
+<section class="end">
+
+<p>
+“Cánh Hoa Không Rụng” – một bài hát chưa bao giờ được phát hành.<br>
+Một tình yêu chưa từng chịu buông tay.<br>
+Và một bản án mà chỉ có tội lỗi mới nghe thấy trong sương.
+</p>
+
+<a
+    href="index.html"
+    class="return">
+
+    ← QUAY VỀ WEB CHÍNH
+
+</a>
+
+</section>
+
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   SƯƠNG MÙ
+========================================================= */
+
+const mistContainer =
+    document.getElementById(
+        "mistContainer"
+    );
+
+
+function createMist(){
+
+    const mist =
+        document.createElement(
+            "div"
+        );
+
+    mist.className =
+        "mist" +
+        (
+            Math.random() > .55
+            ? " low"
+            : ""
+        );
+
+
+    mist.style.width =
+        (
+            Math.random() * 400 + 250
+        ) + "px";
+
+
+    mist.style.height =
+        (
+            Math.random() * 100 + 50
+        ) + "px";
+
+
+    mist.style.left =
+        Math.random() * 100 + "vw";
+
+
+    mist.style.top =
+        Math.random() * 90 + "vh";
+
+
+    mist.style.animationDuration =
+        (
+            Math.random() * 18 + 22
+        ) + "s";
+
+
+    mist.style.animationDelay =
+        (
+            Math.random() * -30
+        ) + "s";
+
+
+    mistContainer.appendChild(
+        mist
+    );
+
+
+    setTimeout(
+        () => {
+            mist.remove();
+        },
+        50000
+    );
+
+}
+
+
+/* Sương ban đầu */
+
+for(
+    let i = 0;
+    i < 28;
+    i++
+){
+
+    createMist();
+
+}
+
+
+/* Sương mới */
+
+setInterval(
+    createMist,
+    1200
+);
+
+
+/* =========================================================
+   CÁNH HOA
+========================================================= */
+
+const petalContainer =
+    document.getElementById(
+        "petalContainer"
+    );
+
+
+function createPetal(){
+
+    const petal =
+        document.createElement(
+            "div"
+        );
+
+    petal.className =
+        "petal";
+
+
+    /* Vị trí */
+
+    petal.style.left =
+        Math.random() * 100 + "vw";
+
+
+    /* Kích thước */
+
+    const size =
+        Math.random() * 5 + 5;
+
+    petal.style.width =
+        size + "px";
+
+    petal.style.height =
+        size * 1.45 + "px";
+
+
+    /* Độ trong suốt */
+
+    petal.style.opacity =
+        Math.random() * .35 + .25;
+
+
+    /* Độ trôi */
+
+    petal.style.setProperty(
+        "--drift",
+        (
+            Math.random() * 300 - 150
+        ) + "px"
+    );
+
+
+    /* Tốc độ */
+
+    petal.style.animationDuration =
+        (
+            Math.random() * 8 + 10
+        ) + "s";
+
+
+    /* Độ lệch thời gian */
+
+    petal.style.animationDelay =
+        (
+            Math.random() * -12
+        ) + "s";
+
+
+    petalContainer.appendChild(
+        petal
+    );
+
+
+    setTimeout(
+        () => {
+            petal.remove();
+        },
+        20000
+    );
+
+}
+
+
+/* Hoa ban đầu */
+
+for(
+    let i = 0;
+    i < 22;
+    i++
+){
+
+    createPetal();
+
+}
+
+
+/* Hoa mới */
+
+setInterval(
+    createPetal,
+    850
+);
+
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+let audioContext = null;
+
+let soundEnabled = true;
+
+let audioInitialized = false;
+
+
+function initializeAudio(){
+
+    if(audioInitialized){
+        return;
+    }
+
+
+    const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+
+    if(!AudioContext){
+        return;
+    }
+
+
+    audioContext =
+        new AudioContext();
+
+
+    audioInitialized = true;
+
+}
+
+
+/* =========================================================
+   THUNDER
+========================================================= */
+
+function playThunder(){
+
+    if(!soundEnabled){
+        return;
+    }
+
+
+    initializeAudio();
+
+
+    if(!audioContext){
+        return;
+    }
+
+
+    if(
+        audioContext.state ===
+        "suspended"
+    ){
+
+        audioContext.resume();
+
+    }
+
+
+    const now =
+        audioContext.currentTime;
+
+
+    /* Master */
+
+    const master =
+        audioContext.createGain();
+
+
+    master.gain.setValueAtTime(
+        .0001,
+        now
+    );
+
+
+    master.gain.exponentialRampToValueAtTime(
+        .45,
+        now + .025
+    );
+
+
+    master.gain.exponentialRampToValueAtTime(
+        .0001,
+        now + 1.5
+    );
+
+
+    master.connect(
+        audioContext.destination
+    );
+
+
+    /* Low thunder */
+
+    const oscillator =
+        audioContext.createOscillator();
+
+
+    const oscillatorGain =
+        audioContext.createGain();
+
+
+    oscillator.type =
+        "sawtooth";
+
+
+    oscillator.frequency.setValueAtTime(
+        55,
+        now
+    );
+
+
+    oscillator.frequency.exponentialRampToValueAtTime(
+        30,
+        now + 1.3
+    );
+
+
+    oscillatorGain.gain.setValueAtTime(
+        .0001,
+        now
+    );
+
+
+    oscillatorGain.gain.exponentialRampToValueAtTime(
+        .28,
+        now + .035
+    );
+
+
+    oscillatorGain.gain.exponentialRampToValueAtTime(
+        .0001,
+        now + 1.4
+    );
+
+
+    oscillator.connect(
+        oscillatorGain
+    );
+
+
+    oscillatorGain.connect(
+        master
+    );
+
+
+    oscillator.start(now);
+
+    oscillator.stop(
+        now + 1.5
+    );
+
+
+    /* Noise */
+
+    const bufferSize =
+        audioContext.sampleRate * 1.5;
+
+
+    const buffer =
+        audioContext.createBuffer(
+            1,
+            bufferSize,
+            audioContext.sampleRate
+        );
+
+
+    const data =
+        buffer.getChannelData(0);
+
+
+    for(
+        let i = 0;
+        i < bufferSize;
+        i++
+    ){
+
+        data[i] =
+            Math.random() * 2 - 1;
+
+    }
+
+
+    const noise =
+        audioContext.createBufferSource();
+
+
+    noise.buffer =
+        buffer;
+
+
+    const filter =
+        audioContext.createBiquadFilter();
+
+
+    filter.type =
+        "lowpass";
+
+
+    filter.frequency.setValueAtTime(
+        850,
+        now
+    );
+
+
+    filter.frequency.exponentialRampToValueAtTime(
+        80,
+        now + 1.25
+    );
+
+
+    const noiseGain =
+        audioContext.createGain();
+
+
+    noiseGain.gain.setValueAtTime(
+        .0001,
+        now
+    );
+
+
+    noiseGain.gain.exponentialRampToValueAtTime(
+        .5,
+        now + .02
+    );
+
+
+    noiseGain.gain.exponentialRampToValueAtTime(
+        .0001,
+        now + 1.35
+    );
+
+
+    noise.connect(filter);
+
+    filter.connect(noiseGain);
+
+    noiseGain.connect(master);
+
+
+    noise.start(now);
+
+    noise.stop(
+        now + 1.5
+    );
+
+}
+
+
+/* =========================================================
+   LIGHTNING
+========================================================= */
+
+function lightning(){
+
+    const flash =
+        document.getElementById(
+            "stormFlash"
+        );
+
+
+    flash.classList.remove(
+        "active"
+    );
+
+
+    void flash.offsetWidth;
+
+
+    flash.classList.add(
+        "active"
+    );
+
+
+    document.body.classList.remove(
+        "shake"
+    );
+
+
+    void document.body.offsetWidth;
+
+
+    document.body.classList.add(
+        "shake"
+    );
+
+
+    setTimeout(
+        () => {
+
+            document.body.classList.remove(
+                "shake"
+            );
+
+        },
+        450
+    );
+
+}
+
+
+/* =========================================================
+   STORM
+========================================================= */
+
+function triggerStorm(){
+
+    lightning();
+
+    playThunder();
+
+}
+
+
+/* =========================================================
+   TEXT FALL
+========================================================= */
+
+function makeTextFall(
+    element
+){
+
+    if(
+        element.classList.contains(
+            "falling"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    const randomX =
+        Math.random() * 240 - 120;
+
+
+    const randomRotation =
+        Math.random() * 18 - 9;
+
+
+    element.style.setProperty(
+        "--fall-x",
+        randomX + "px"
+    );
+
+
+    element.style.setProperty(
+        "--fall-r",
+        randomRotation + "deg"
+    );
+
+
+    element.classList.add(
+        "falling"
+    );
+
+
+    /*
+       Sau khi rơi,
+       chữ trở lại vị trí ban đầu.
+    */
+
+    setTimeout(
+        () => {
+
+            element.classList.remove(
+                "falling"
+            );
+
+
+            element.style.removeProperty(
+                "--fall-x"
+            );
+
+
+            element.style.removeProperty(
+                "--fall-r"
+            );
+
+        },
+        1000
+    );
+
+}
+
+
+/* =========================================================
+   CLICK ONLY
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".story-text, .quote"
+    )
+    .forEach(
+        element => {
+
+            element.addEventListener(
+                "click",
+                function(event){
+
+                    event.stopPropagation();
+
+
+                    /*
+                       Chỉ đoạn được click
+                       mới rơi.
+                    */
+
+                    makeTextFall(
+                        this
+                    );
+
+
+                    /*
+                       Sấm + chớp + rung.
+                    */
+
+                    triggerStorm();
+
+                }
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   SOUND BUTTON
+========================================================= */
+
+const soundButton =
+    document.getElementById(
+        "soundButton"
+    );
+
+
+soundButton.addEventListener(
+    "click",
+    function(){
+
+        soundEnabled =
+            !soundEnabled;
+
+
+        if(soundEnabled){
+
+            this.textContent =
+                "🔊 ÂM THANH: BẬT";
+
+            initializeAudio();
+
+        }else{
+
+            this.textContent =
+                "🔇 ÂM THANH: TẮT";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   UNLOCK AUDIO
+   Không tự phát âm thanh.
+========================================================= */
+
+document.addEventListener(
+    "pointerdown",
+    function(){
+
+        initializeAudio();
+
+
+        if(
+            audioContext &&
+            audioContext.state ===
+            "suspended"
+        ){
+
+            audioContext.resume();
+
+        }
+
+    },
+    {
+        once:true
+    }
+);
+
+
+/* =========================================================
+   PHÍM M
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key.toLowerCase()
+            === "m"
+        ){
+
+            soundEnabled =
+                !soundEnabled;
+
+
+            soundButton.textContent =
+                soundEnabled
+                ? "🔊 ÂM THANH: BẬT"
+                : "🔇 ÂM THANH: TẮT";
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
